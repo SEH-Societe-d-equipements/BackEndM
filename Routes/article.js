@@ -34,6 +34,7 @@ router.get('/articles', articleController.getAllArticles);
 router.get('/articles/:id', articleController.getArticleById);
 
 
+router.get('/firstFourArticles', articleController.getFirstFourArticles);
 
 
 module.exports = router;

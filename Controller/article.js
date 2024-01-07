@@ -104,5 +104,25 @@ exports.getArticleById = async (req, res, next) => {
     next(err);
   }
 };
+exports.getFirstFourArticles = async (req, res, next) => {
+  try {
+    let filter = {};
+    if (req.query.categoryId) {
+      filter.Categorie = req.query.categoryId;
+    }
+
+    const articles = await Article.find(filter)
+      .limit(4)
+      .populate('Categorie');
+
+    res.status(200).json({
+      success: true,
+      articles: articles,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 
