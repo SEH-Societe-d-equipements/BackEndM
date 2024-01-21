@@ -7,6 +7,7 @@ const articleSchema = new Schema(
     Designation: { type: String },
     Categorie: { type: Schema.Types.ObjectId, ref: "category" },
     Photo: { type: String },
+    description: {type:String}
     
   },
   { timestamps: true }

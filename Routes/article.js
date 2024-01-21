@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
   const upload = multer({ storage: storage });
 router.post('/articles', upload.single('Photo'), articleController.addArticle);
 
-router.patch('/articles/:id', articleController.updateArticle);
+router.put('/articles/:id',upload.single('Photo'), articleController.updateArticle);
 
 router.delete('/articles/:id', articleController.deleteArticle);
 

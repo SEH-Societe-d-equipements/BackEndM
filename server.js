@@ -6,6 +6,7 @@ const { mongoose, connectDB } = require("./Middleware/connect");
 const userRoutes = require("./Routes/admin");
 const categoryRoutes = require('./Routes/category');
 const articleRoutes = require('./Routes/article');
+const contactRoutes = require('./Routes/contact');
 
 
 
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/article", articleRoutes);
+app.use("/api/contact", contactRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

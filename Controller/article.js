@@ -5,6 +5,7 @@ exports.addArticle = async (req, res, next) => {
       Reference,
       Designation,
       Categorie,
+      description,
 
     } = req.body;
 
@@ -16,6 +17,7 @@ exports.addArticle = async (req, res, next) => {
       Designation,
       Categorie,
       Photo: req.file ? req.file.path : undefined,
+      description
     });
 
     const savedArticle = await newArticle.save();
@@ -87,7 +89,7 @@ exports.getArticleById = async (req, res, next) => {
   try {
     const articleId = req.params.id;
 
-    const article = await Article.findById(articleId);
+    const article = await Article.findById(articleId).populate('Categorie');
 
     if (!article) {
       return res.status(404).json({
